@@ -69,6 +69,41 @@ aside[data-side-index] a[aria-current="true"] [data-navbar] {
   font-family: 'Galmuri11', monospace; font-size: 12px; color: #8b8375; line-height: 1.8;
 }
 
+/* ── 게임 덮개 ────────────────────────────────────────
+   세로 9:16 게임을 본문 칸에 넣으면 손톱만 하다. 크게 띄운다.
+   닫으면 iframe 이 사라지므로 소리도 그때 멎는다 —
+   다른 출처의 iframe 안은 손이 닿지 않아 「끄기」는 만들 수 없다. */
+.modal {
+  position: fixed; inset: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: center;
+  padding: 16px; background: rgba(6, 7, 10, .94);
+}
+.modal-box {
+  display: flex; flex-direction: column;
+  border: 2px solid #2a251c; background: #0b0a08;
+  max-width: 96vw; max-height: 96vh;
+}
+.modal-bar {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  padding: 10px 12px; border-bottom: 2px solid #2a251c;
+  font-family: 'Galmuri11', monospace; font-size: 12px; color: #8b8375;
+}
+.modal-title { color: #f4eee1; }
+.modal-note { margin-left: auto; }
+.modal-x {
+  transition: all 90ms steps(3, end);
+  padding: 7px 12px; border: 2px solid #3a3328; background: #15130f;
+  color: #d6cdbc; font-family: 'Galmuri11', monospace; font-size: 12px; cursor: pointer;
+}
+.modal-x:hover { border-color: #d4623f; color: #f4eee1; background: #1f1c16; }
+.modal-x:active { transform: translate(0, 2px); }
+.modal-frame { position: relative; background: #0b0a08; }
+@media (max-width: 599px) {
+  .modal { padding: 0; }
+  .modal-box { max-width: 100vw; max-height: 100vh; border-width: 0 0 2px; }
+  .modal-note { display: none; }
+}
+
 /* ── 이미지 기본 ──────────────────────────────────────── */
 img { max-width: 100%; }
 .fit-contain { object-fit: contain !important; background: #0b0a08; }

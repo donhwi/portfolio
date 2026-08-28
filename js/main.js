@@ -83,17 +83,21 @@
     function apply() {
       stage.style.transform = 'translate(' + Math.round(x) + 'px,' + Math.round(y) + 'px) scale(' + z + ')';
     }
-    /* 처음에는 트리가 통째로 보이게 맞춘다. 잘려 있으면 고장난 것으로 읽힌다. */
+    /* 처음 화면은 **폭에 맞춘다.**
+       트리가 세로로 길어(1082x2926) 통째로 맞추면 배율이 0.2가 되고 글자가 3px 이 된다 —
+       읽을 수 없는 벽이 된다. 폭을 채우고 위에서 시작하면 첫 줄부터 읽힌다.
+       나머지는 끌어서 내려가는 쪽이 맞다. */
     function fitAll() {
       var art = stage.firstElementChild || stage;
       var w = art.getAttribute && +art.getAttribute('width');
       var h = art.getAttribute && +art.getAttribute('height');
       var r = box.getBoundingClientRect();
       if (!w || !h || !r.width) return;
-      fit = Math.min(1, Math.min((r.width - 16) / w, (r.height - 16) / h));
+      fit = Math.min(1, (r.width - 16) / w);
       z = fit;
       x = Math.max(0, (r.width - w * z) / 2);
-      y = Math.max(0, (r.height - h * z) / 2);
+      // 위쪽 46px 은 「끌어서 옮기고…」 안내 칩이 덮는 자리다. 첫 줄이 그 밑에 깔리면 안 된다
+      y = h * z <= r.height ? Math.max(0, (r.height - h * z) / 2) : 46;
       apply();
     }
     function zoomAt(f, cx, cy) {
@@ -177,21 +181,73 @@
     });
   }
 
-  /* ── 5. 남의 서버는 눌렀을 때만 부른다 ──────────────────────
-     게임엔에 올라간 MAGNET FRIENDS 원본이라 대역폭이 그쪽 것이다. */
+  /* ── 5. 남의 게임은 눌렀을 때만, 그리고 크게 띄운다 ──────────────
+     ① 대역폭이 그쪽 것이라 누르기 전에는 안 부른다.
+     ② 세로 9:16 게임을 본문의 16:9 칸에 넣으면 손톱만 해진다. 그래서 덮개로 띄운다.
+     ③ **소리를 우리가 끌 수는 없다.** 다른 출처의 iframe 안은 손이 닿지 않는다.
+        대신 닫으면 iframe 이 통째로 사라져 소리가 즉시 멎는다 — 끄기 대신 멈추기다. */
   function embeds() {
+    var open = null;
+
+    function close() {
+      if (!open) return;
+      var back = open.back;
+      document.removeEventListener('keydown', onKey);
+      removeEventListener('resize', fit);
+      open.overlay.remove();          // iframe 이 사라지면서 소리도 멎는다
+      document.body.style.overflow = '';
+      open = null;
+      if (back && back.focus) back.focus();
+    }
+    function onKey(e) { if (e.key === 'Escape') close(); }
+    function fit() {
+      if (!open) return;
+      var ar = open.ar;
+      var h = Math.min(innerHeight * 0.86, 1000);
+      var w = h * ar;
+      if (w > innerWidth * 0.94) { w = innerWidth * 0.94; h = w / ar; }
+      open.frame.style.width = Math.round(w) + 'px';
+      open.frame.style.height = Math.round(h) + 'px';
+    }
+
     [].slice.call(document.querySelectorAll('[data-embed]')).forEach(function (btn) {
       btn.addEventListener('click', function () {
-        var host = btn.closest('[data-embed-host]');
-        if (!host) return;
+        if (open) return;
+        var r = (btn.dataset.embedRatio || '16/9').split('/');
+        var overlay = document.createElement('div');
+        overlay.className = 'modal';
+        overlay.setAttribute('role', 'dialog');
+        overlay.setAttribute('aria-modal', 'true');
+        overlay.setAttribute('aria-label', btn.dataset.embedTitle || '게임');
+        overlay.innerHTML =
+          '<div class="modal-box">' +
+            '<div class="modal-bar">' +
+              '<span class="modal-title"></span>' +
+              '<span class="modal-note">소리가 납니다 · 닫으면 멈춥니다</span>' +
+              '<button class="modal-x" type="button">✕ 닫기</button>' +
+            '</div>' +
+            '<div class="modal-frame"></div>' +
+          '</div>';
+        overlay.querySelector('.modal-title').textContent = btn.dataset.embedTitle || '게임';
+
+        var frame = overlay.querySelector('.modal-frame');
         var f = document.createElement('iframe');
         f.className = 'embed';
         f.src = btn.dataset.embed;
         f.title = btn.dataset.embedTitle || '게임';
-        f.allow = 'autoplay; fullscreen';
-        f.setAttribute('loading', 'lazy');
-        host.innerHTML = '';
-        host.appendChild(f);
+        f.allow = 'fullscreen';
+        frame.appendChild(f);
+
+        overlay.addEventListener('click', function (e) { if (e.target === overlay) close(); });
+        overlay.querySelector('.modal-x').addEventListener('click', close);
+        document.body.appendChild(overlay);
+        document.body.style.overflow = 'hidden';
+
+        open = { overlay: overlay, frame: frame, back: btn, ar: (+r[0] / +r[1]) || 16 / 9 };
+        fit();
+        addEventListener('resize', fit);
+        document.addEventListener('keydown', onKey);
+        overlay.querySelector('.modal-x').focus();
       });
     });
   }
