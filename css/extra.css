@@ -82,6 +82,22 @@ img { max-width: 100%; }
   .embed-note { font-size: 12px; }
 }
 
+/* ── 태블릿 폭의 전투 루프 ────────────────────────────
+   시안은 768px 아래에서만 카드를 세로로 쌓는다. 그 위(768~940)에서는
+   카드 묶음이 990px 이라 가로로 밀린다 — 스크롤은 되지만 「전환」 화살표가
+   화면 밖이라 페이즈 2·3 이 있는 줄을 모른다. 쌓는 구간을 940 까지 올린다. */
+@media (min-width: 768px) and (max-width: 940px) {
+  [data-loop-wrap] { min-width: 0 !important; }
+  [data-loop-row] { flex-direction: column !important; }
+  [data-loop-arrow] { flex: none !important; width: 100%; padding: 10px 0 !important; }
+  [data-loop-arrow] > span:last-child { width: 60% !important; }
+  [data-loop-cap] { flex: none !important; flex-direction: row !important; gap: 10px !important; padding: 8px 0 !important; }
+  [data-loop-cap] > span:last-child {
+    flex: 1 !important; width: auto !important; height: 2px !important;
+    background: repeating-linear-gradient(90deg, #2a3843 0 6px, transparent 6px 12px) !important;
+  }
+}
+
 /* ── 인쇄 (PDF 로 뽑아 보는 사람이 있다) ──────────────── */
 @media print {
   aside[data-side-index], .skip { display: none !important; }
