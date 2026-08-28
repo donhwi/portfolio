@@ -887,313 +887,168 @@
 <div data-breakout="1" style="display: flex; flex-direction: column; gap: 16px; margin-left: -56px;">
 <div style="position: relative; border: 2px solid rgb(42, 56, 67); background: rgb(11, 14, 18); height: 640px; overflow: hidden;">
 <div aria-label="보스 Behavior Tree 전체 · 끌어서 옮기고 확대할 수 있습니다" id="bt-viewer" role="img" style="position: absolute; inset: 0px; overflow: hidden; cursor: grab;" tabindex="0">
-<div style="position:absolute;left:0;top:0;width:1082px;height:2926px;transform-origin:0 0;">
-<svg font-family="Galmuri11, Malgun Gothic, monospace" height="2926" viewbox="0 0 1082 2926" width="1082" xmlns="http://www.w3.org/2000/svg">
-<rect fill="#06070a" height="2926" width="1082"></rect>
-<rect fill="#8a6b45" height="26" opacity="0.18" width="1046" x="18" y="18"></rect>
-<rect fill="#8a6b45" height="26" width="4" x="18" y="18"></rect>
-<text fill="#e7edf2" font-size="13" font-weight="700" x="32" y="36">페이즈 1  ·  위에서 아래로 판정한다 (먼저 참인 행이 이긴다)</text>
-<rect fill="#10161c" height="32" stroke="#1f2a33" width="700" x="18" y="60"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="80">HP 비율 이하인가 (Percent=65)</text>
-<path d="M718 76.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="32" stroke="#2b4034" width="330" x="734" y="60"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="80">페이즈 전환 연출</text>
-<rect fill="#10161c" height="32" stroke="#1f2a33" width="700" x="18" y="98"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="118">돌진이 예약되어 있는가</text>
-<path d="M718 114.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="32" stroke="#2b4034" width="330" x="734" y="98"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="118">패턴 시전 (Pattern=P1-3 휘두르며 돌진)</text>
-<rect fill="#10161c" height="32" stroke="#1f2a33" width="700" x="18" y="136"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="156">HP 경계 최초 통과인가 (Percent=90)</text>
-<path d="M718 152.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="32" stroke="#2b4034" width="330" x="734" y="136"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="156">패턴 시전 (Pattern=P1-2 내려찍기)</text>
-<rect fill="#10161c" height="32" stroke="#1f2a33" width="700" x="18" y="174"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="194">HP 경계 최초 통과인가 (Percent=75)</text>
-<path d="M718 190.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="32" stroke="#2b4034" width="330" x="734" y="174"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="194">패턴 시전 (Pattern=P1-2 내려찍기)</text>
-<rect fill="#10161c" height="50" stroke="#1f2a33" width="700" x="18" y="212"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="232">패턴이 열렸는가 (Percent=90, GraceSeconds=10)</text>
-<text fill="#e7edf2" font-size="12" x="28" y="250">AND 타이머가 경과했는가  (Timer=GreatSwing, Seconds=18)</text>
-<path d="M718 237.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="50" stroke="#2b4034" width="330" x="734" y="212"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="232">패턴 시전 (Pattern=P1-4 크게 휘두르기)</text>
-<rect fill="#10161c" height="68" stroke="#1f2a33" width="700" x="18" y="268"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="288">패턴이 열렸는가 (Percent=90, GraceSeconds=10)</text>
-<text fill="#e7edf2" font-size="12" x="28" y="306">AND 재사용이 끝났는가  (Code=P1-1)</text>
-<text fill="#e7edf2" font-size="12" x="28" y="324">AND 직전 패턴이 아닌가  (Code=P1-1)</text>
-<path d="M718 302.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="68" stroke="#2b4034" width="330" x="734" y="268"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="288">패턴 시전 (Pattern=P1-1 나무몽둥이 후리기)</text>
-<rect fill="#10161c" height="68" stroke="#1f2a33" width="700" x="18" y="342"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="362">패턴이 열렸는가 (Percent=90, GraceSeconds=10)</text>
-<text fill="#e7edf2" font-size="12" x="28" y="380">AND 재사용이 끝났는가  (Code=P1-5)</text>
-<text fill="#e7edf2" font-size="12" x="28" y="398">AND 직전 패턴이 아닌가  (Code=P1-5)</text>
-<path d="M718 376.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="68" stroke="#2b4034" width="330" x="734" y="342"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="362">패턴 시전 (Pattern=P1-5 대회전 (2타))</text>
-<rect fill="#10161c" height="50" stroke="#1f2a33" width="700" x="18" y="416"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="436">재사용이 끝났는가 (Code=P1-6)</text>
-<text fill="#e7edf2" font-size="12" x="28" y="454">AND 어글자가 도망 중인가  (Seconds=3, 반대=True)</text>
-<path d="M718 441.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="50" stroke="#2b4034" width="330" x="734" y="416"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="436">패턴 시전 (Pattern=P1-6 위협 포효)</text>
-<rect fill="#10161c" height="32" stroke="#1f2a33" width="700" x="18" y="472"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="492">어글자가 사거리 안인가 (RangeDoc=&lt;BasicRangeDoc&gt;)</text>
-<path d="M718 488.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="32" stroke="#2b4034" width="330" x="734" y="472"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="492">패턴 시전 (Pattern=P1-0 기본 공격 (몽둥이))</text>
-<rect fill="#10161c" height="68" stroke="#1f2a33" width="700" x="18" y="510"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="530">재사용이 끝났는가 (Code=P1-9)</text>
-<text fill="#e7edf2" font-size="12" x="28" y="548">AND 어글자가 도망 중인가  (Seconds=3)</text>
-<text fill="#e7edf2" font-size="12" x="28" y="566">AND 어글자가 사거리 밖인가  (RangeDoc=&lt;BasicRangeDoc&gt;)</text>
-<path d="M718 544.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="68" stroke="#2b4034" width="330" x="734" y="510"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="530">패턴 시전 (Pattern=P1-9 돌 던지기)</text>
-<rect fill="#10161c" height="32" stroke="#1f2a33" width="700" x="18" y="584"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="604">어글자가 도망 중인가 (Seconds=0)</text>
-<path d="M718 600.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="32" stroke="#2b4034" width="330" x="734" y="584"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="604">거리 좁히기 (갭 클로저)  (Pattern=P1-3 휘두르며 돌진)</text>
-<rect fill="#10161c" height="32" stroke="#1f2a33" width="700" x="18" y="622"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="642">어글자가 사거리 밖인가 (RangeDoc=&lt;BasicRangeDoc&gt;)</text>
-<path d="M718 638.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="32" stroke="#2b4034" width="330" x="734" y="622"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="642">어글자에게 접근</text>
-<rect fill="#10161c" height="32" stroke="#1f2a33" width="700" x="18" y="660"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="680">어글자가 사거리 안인가 (RangeDoc=&lt;BasicRangeDoc&gt;)</text>
-<path d="M718 676.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="32" stroke="#2b4034" width="330" x="734" y="660"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="680">어글자를 압박</text>
-<text fill="#8b8375" font-size="12" x="28" y="718">조건 없음 (안전망)</text>
-<path d="M718 714.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="32" stroke="#2b4034" width="330" x="734" y="698"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="718">어글자에게 접근</text>
-<rect fill="#d4623f" height="26" opacity="0.18" width="1046" x="18" y="752"></rect>
-<rect fill="#d4623f" height="26" width="4" x="18" y="752"></rect>
-<text fill="#e7edf2" font-size="13" font-weight="700" x="32" y="770">페이즈 2  ·  위에서 아래로 판정한다 (먼저 참인 행이 이긴다)</text>
-<rect fill="#10161c" height="32" stroke="#1f2a33" width="700" x="18" y="794"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="814">HP 비율 이하인가 (Percent=30)</text>
-<path d="M718 810.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="32" stroke="#2b4034" width="330" x="734" y="794"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="814">페이즈 전환 연출</text>
-<rect fill="#10161c" height="50" stroke="#1f2a33" width="700" x="18" y="832"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="852">패턴이 열렸는가  (Percent=55, GraceSeconds=12)</text>
-<text fill="#e7edf2" font-size="12" x="28" y="870">AND 이번 페이즈 첫 행동인가</text>
-<path d="M718 857.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="50" stroke="#2b4034" width="330" x="734" y="832"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="852">패턴 시전 (Pattern=P2-1 들배지기)</text>
-<rect fill="#10161c" height="68" stroke="#1f2a33" width="700" x="18" y="888"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="908">패턴이 열렸는가 (Percent=55, GraceSeconds=12)</text>
-<text fill="#e7edf2" font-size="12" x="28" y="926">AND 반경 안 인원이 많은가  (RadiusDoc=220, Count=3)</text>
-<text fill="#e7edf2" font-size="12" x="28" y="944">AND 재사용이 끝났는가  (Code=P2-4)</text>
-<path d="M718 922.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="68" stroke="#2b4034" width="330" x="734" y="888"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="908">패턴 시전 (Pattern=P2-4 잡채기)</text>
-<rect fill="#10161c" height="68" stroke="#1f2a33" width="700" x="18" y="962"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="982">패턴이 열렸는가 (Percent=55, GraceSeconds=12)</text>
-<text fill="#e7edf2" font-size="12" x="28" y="1000">AND 최근 5초 피해가 큰가  (Amount=1000)</text>
-<text fill="#e7edf2" font-size="12" x="28" y="1018">AND 재사용이 끝났는가  (Code=P2-5)</text>
-<path d="M718 996.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="68" stroke="#2b4034" width="330" x="734" y="962"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="982">패턴 시전 (Pattern=P2-5 되치기)</text>
-<rect fill="#10161c" height="50" stroke="#1f2a33" width="700" x="18" y="1036"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="1056">패턴이 열렸는가 (Percent=55, GraceSeconds=12)</text>
-<text fill="#e7edf2" font-size="12" x="28" y="1074">AND 쓸 수 있는 상시 패턴이 있는가  (Patterns=[P2-1·P2-2·P2-3])</text>
-<path d="M718 1061.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="50" stroke="#2b4034" width="330" x="734" y="1036"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="1056">상시 패턴 시전 (Patterns=[P2-1·P2-2·P2-3])</text>
-<rect fill="#10161c" height="68" stroke="#1f2a33" width="700" x="18" y="1092"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="1112">패턴이 열렸는가 (Percent=55, GraceSeconds=12)</text>
-<text fill="#e7edf2" font-size="12" x="28" y="1130">AND 재사용이 끝났는가  (Code=P1-7)</text>
-<text fill="#e7edf2" font-size="12" x="28" y="1148">AND 어글자가 도망 중인가  (Seconds=3, 반대=True)</text>
-<path d="M718 1126.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="68" stroke="#2b4034" width="330" x="734" y="1092"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="1112">패턴 시전 (Pattern=P1-7 도깨비불)</text>
-<rect fill="#10161c" height="68" stroke="#1f2a33" width="700" x="18" y="1166"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="1186">패턴이 열렸는가 (Percent=55, GraceSeconds=12)</text>
-<text fill="#e7edf2" font-size="12" x="28" y="1204">AND 재사용이 끝났는가  (Code=P1-5)</text>
-<text fill="#e7edf2" font-size="12" x="28" y="1222">AND 직전 패턴이 아닌가  (Code=P1-5)</text>
-<path d="M718 1200.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="68" stroke="#2b4034" width="330" x="734" y="1166"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="1186">패턴 시전 (Pattern=P1-5 대회전 (2타))</text>
-<rect fill="#10161c" height="50" stroke="#1f2a33" width="700" x="18" y="1240"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="1260">재사용이 끝났는가 (Code=P1-6)</text>
-<text fill="#e7edf2" font-size="12" x="28" y="1278">AND 어글자가 도망 중인가  (Seconds=3, 반대=True)</text>
-<path d="M718 1265.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="50" stroke="#2b4034" width="330" x="734" y="1240"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="1260">패턴 시전 (Pattern=P1-6 위협 포효)</text>
-<rect fill="#10161c" height="32" stroke="#1f2a33" width="700" x="18" y="1296"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="1316">어글자가 사거리 안인가 (RangeDoc=&lt;BasicRangeDoc&gt;)</text>
-<path d="M718 1312.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="32" stroke="#2b4034" width="330" x="734" y="1296"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="1316">패턴 시전 (Pattern=P2-0 기본 공격 (장타))</text>
-<rect fill="#10161c" height="68" stroke="#1f2a33" width="700" x="18" y="1334"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="1354">재사용이 끝났는가 (Code=P2-7)</text>
-<text fill="#e7edf2" font-size="12" x="28" y="1372">AND 어글자가 도망 중인가  (Seconds=1.5)</text>
-<text fill="#e7edf2" font-size="12" x="28" y="1390">AND 어글자가 사거리 밖인가  (RangeDoc=&lt;BasicRangeDoc&gt;)</text>
-<path d="M718 1368.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="68" stroke="#2b4034" width="330" x="734" y="1334"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="1354">패턴 시전 (Pattern=P2-7 불덩이)</text>
-<rect fill="#10161c" height="32" stroke="#1f2a33" width="700" x="18" y="1408"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="1428">어글자가 도망 중인가 (Seconds=0)</text>
-<path d="M718 1424.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="32" stroke="#2b4034" width="330" x="734" y="1408"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="1428">거리 좁히기 (갭 클로저)  (Pattern=P1-3 휘두르며 돌진)</text>
-<rect fill="#10161c" height="32" stroke="#1f2a33" width="700" x="18" y="1446"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="1466">어글자가 사거리 밖인가 (RangeDoc=&lt;BasicRangeDoc&gt;)</text>
-<path d="M718 1462.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="32" stroke="#2b4034" width="330" x="734" y="1446"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="1466">어글자에게 접근</text>
-<rect fill="#10161c" height="32" stroke="#1f2a33" width="700" x="18" y="1484"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="1504">어글자가 사거리 안인가 (RangeDoc=&lt;BasicRangeDoc&gt;)</text>
-<path d="M718 1500.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="32" stroke="#2b4034" width="330" x="734" y="1484"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="1504">어글자를 압박</text>
-<text fill="#8b8375" font-size="12" x="28" y="1542">조건 없음 (안전망)</text>
-<path d="M718 1538.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="32" stroke="#2b4034" width="330" x="734" y="1522"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="1542">어글자에게 접근</text>
-<rect fill="#4f7f8a" height="26" opacity="0.18" width="1046" x="18" y="1576"></rect>
-<rect fill="#4f7f8a" height="26" width="4" x="18" y="1576"></rect>
-<text fill="#e7edf2" font-size="13" font-weight="700" x="32" y="1594">페이즈 3  ·  위에서 아래로 판정한다 (먼저 참인 행이 이긴다)</text>
-<rect fill="#10161c" height="50" stroke="#1f2a33" width="700" x="18" y="1618"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="1638">패턴이 열렸는가  (Percent=25, GraceSeconds=8)</text>
-<text fill="#e7edf2" font-size="12" x="28" y="1656">AND 이번 페이즈 첫 행동인가</text>
-<path d="M718 1643.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="50" stroke="#2b4034" width="330" x="734" y="1618"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="1638">패턴 시전 (Pattern=P3-3 철퇴 내려찍기)</text>
-<rect fill="#10161c" height="50" stroke="#1f2a33" width="700" x="18" y="1674"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="1694">패턴이 열렸는가 (Percent=25, GraceSeconds=8)</text>
-<text fill="#e7edf2" font-size="12" x="28" y="1712">AND 타이머가 경과했는가  (Timer=P33, Seconds=20)</text>
-<path d="M718 1699.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="50" stroke="#2b4034" width="330" x="734" y="1674"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="1694">패턴 시전 (Pattern=P3-3 철퇴 내려찍기)</text>
-<rect fill="#10161c" height="32" stroke="#1f2a33" width="700" x="18" y="1730"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="1750">재사용이 끝났는가 (Code=P3-5)</text>
-<path d="M718 1746.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="32" stroke="#2b4034" width="330" x="734" y="1730"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="1750">패턴 시전 (Pattern=P3-5 얼음 유도탄)</text>
-<rect fill="#10161c" height="50" stroke="#1f2a33" width="700" x="18" y="1768"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="1788">패턴이 열렸는가 (Percent=25, GraceSeconds=8)</text>
-<text fill="#e7edf2" font-size="12" x="28" y="1806">AND 타이머가 경과했는가  (Timer=GreatSwing, Seconds=18)</text>
-<path d="M718 1793.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="50" stroke="#2b4034" width="330" x="734" y="1768"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="1788">패턴 시전 (Pattern=P1-4 크게 휘두르기)</text>
-<rect fill="#10161c" height="68" stroke="#1f2a33" width="700" x="18" y="1824"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="1844">패턴이 열렸는가 (Percent=25, GraceSeconds=8)</text>
-<text fill="#e7edf2" font-size="12" x="28" y="1862">AND 반경 안 인원이 많은가  (RadiusDoc=220, Count=3)</text>
-<text fill="#e7edf2" font-size="12" x="28" y="1880">AND 재사용이 끝났는가  (Code=P2-4)</text>
-<path d="M718 1858.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="68" stroke="#2b4034" width="330" x="734" y="1824"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="1844">패턴 시전 (Pattern=P2-4 잡채기)</text>
-<rect fill="#10161c" height="68" stroke="#1f2a33" width="700" x="18" y="1898"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="1918">패턴이 열렸는가 (Percent=25, GraceSeconds=8)</text>
-<text fill="#e7edf2" font-size="12" x="28" y="1936">AND 최근 5초 피해가 큰가  (Amount=1000)</text>
-<text fill="#e7edf2" font-size="12" x="28" y="1954">AND 재사용이 끝났는가  (Code=P2-5)</text>
-<path d="M718 1932.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="68" stroke="#2b4034" width="330" x="734" y="1898"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="1918">패턴 시전 (Pattern=P2-5 되치기)</text>
-<rect fill="#10161c" height="50" stroke="#1f2a33" width="700" x="18" y="1972"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="1992">패턴이 열렸는가 (Percent=25, GraceSeconds=8)</text>
-<text fill="#e7edf2" font-size="12" x="28" y="2010">AND 쓸 수 있는 상시 패턴이 있는가  (Patterns=[P3-1·P3-2])</text>
-<path d="M718 1997.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="50" stroke="#2b4034" width="330" x="734" y="1972"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="1992">상시 패턴 시전 (Patterns=[P3-1·P3-2])</text>
-<rect fill="#10161c" height="50" stroke="#1f2a33" width="700" x="18" y="2028"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="2048">패턴이 열렸는가 (Percent=25, GraceSeconds=8)</text>
-<text fill="#e7edf2" font-size="12" x="28" y="2066">AND 쓸 수 있는 상시 패턴이 있는가  (Patterns=[P1-1·P2-2·P2-3])</text>
-<path d="M718 2053.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="50" stroke="#2b4034" width="330" x="734" y="2028"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="2048">상시 패턴 시전 (Patterns=[P1-1·P2-2·P2-3])</text>
-<rect fill="#10161c" height="50" stroke="#1f2a33" width="700" x="18" y="2084"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="2104">재사용이 끝났는가 (Code=P1-6)</text>
-<text fill="#e7edf2" font-size="12" x="28" y="2122">AND 어글자가 도망 중인가  (Seconds=3, 반대=True)</text>
-<path d="M718 2109.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="50" stroke="#2b4034" width="330" x="734" y="2084"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="2104">패턴 시전 (Pattern=P1-6 위협 포효)</text>
-<rect fill="#10161c" height="86" stroke="#1f2a33" width="700" x="18" y="2140"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="2160">패턴이 열렸는가 (Percent=25, GraceSeconds=8)</text>
-<text fill="#e7edf2" font-size="12" x="28" y="2178">AND 재사용이 끝났는가  (Code=P3-4)</text>
-<text fill="#e7edf2" font-size="12" x="28" y="2196">AND 어글자가 사거리 안인가  (RangeDoc=400)</text>
-<text fill="#e7edf2" font-size="12" x="28" y="2214">AND 어글자가 도망 중인가  (Seconds=3, 반대=True)</text>
-<path d="M718 2183.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="86" stroke="#2b4034" width="330" x="734" y="2140"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="2160">패턴 시전 (Pattern=P3-4 도깨비방망이)</text>
-<rect fill="#10161c" height="32" stroke="#1f2a33" width="700" x="18" y="2232"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="2252">어글자가 사거리 안인가 (RangeDoc=&lt;BasicRangeDoc&gt;)</text>
-<path d="M718 2248.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="32" stroke="#2b4034" width="330" x="734" y="2232"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="2252">패턴 시전 (Pattern=P3-0 기본 공격 (철퇴))</text>
-<rect fill="#10161c" height="68" stroke="#1f2a33" width="700" x="18" y="2270"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="2290">재사용이 끝났는가 (Code=P3-6)</text>
-<text fill="#e7edf2" font-size="12" x="28" y="2308">AND 어글자가 도망 중인가  (Seconds=1.5)</text>
-<text fill="#e7edf2" font-size="12" x="28" y="2326">AND 어글자가 사거리 밖인가  (RangeDoc=&lt;BasicRangeDoc&gt;)</text>
-<path d="M718 2304.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="68" stroke="#2b4034" width="330" x="734" y="2270"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="2290">패턴 시전 (Pattern=P3-6 얼음 살촉)</text>
-<rect fill="#10161c" height="32" stroke="#1f2a33" width="700" x="18" y="2344"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="2364">어글자가 도망 중인가 (Seconds=0)</text>
-<path d="M718 2360.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="32" stroke="#2b4034" width="330" x="734" y="2344"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="2364">거리 좁히기 (갭 클로저)  (Pattern=P1-3 휘두르며 돌진)</text>
-<rect fill="#10161c" height="32" stroke="#1f2a33" width="700" x="18" y="2382"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="2402">어글자가 사거리 밖인가 (RangeDoc=&lt;BasicRangeDoc&gt;)</text>
-<path d="M718 2398.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="32" stroke="#2b4034" width="330" x="734" y="2382"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="2402">어글자에게 접근</text>
-<rect fill="#10161c" height="32" stroke="#1f2a33" width="700" x="18" y="2420"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="2440">어글자가 사거리 안인가 (RangeDoc=&lt;BasicRangeDoc&gt;)</text>
-<path d="M718 2436.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="32" stroke="#2b4034" width="330" x="734" y="2420"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="2440">어글자를 압박</text>
-<text fill="#8b8375" font-size="12" x="28" y="2478">조건 없음 (안전망)</text>
-<path d="M718 2474.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="32" stroke="#2b4034" width="330" x="734" y="2458"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="2478">어글자에게 접근</text>
-<rect fill="#c9a34a" height="26" opacity="0.18" width="1046" x="18" y="2512"></rect>
-<rect fill="#c9a34a" height="26" width="4" x="18" y="2512"></rect>
-<text fill="#e7edf2" font-size="13" font-weight="700" x="32" y="2530">플레이어 트리  ·  같은 문법으로 조작도 트리가 짠다</text>
-<rect fill="#10161c" height="32" stroke="#1f2a33" width="700" x="18" y="2554"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="2574">플레이어가 쓰러졌는가</text>
-<path d="M718 2570.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="32" stroke="#2b4034" width="330" x="734" y="2554"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="2574">플레이어 사망 연출</text>
-<rect fill="#10161c" height="32" stroke="#1f2a33" width="700" x="18" y="2592"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="2612">포션 입력이 있는가</text>
-<path d="M718 2608.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="32" stroke="#2b4034" width="330" x="734" y="2592"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="2612">플레이어 포션 (회복량=350, 포션재사용=10)</text>
-<rect fill="#10161c" height="32" stroke="#1f2a33" width="700" x="18" y="2630"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="2650">플레이어 조작이 잠겼는가</text>
-<path d="M718 2646.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="32" stroke="#2b4034" width="330" x="734" y="2630"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="2650">플레이어 대기</text>
-<rect fill="#10161c" height="50" stroke="#1f2a33" width="700" x="18" y="2668"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="2688">회피 입력이 있는가</text>
-<path d="M718 2693.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="50" stroke="#2b4034" width="330" x="734" y="2668"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="2688">플레이어 회피 (회피거리=180, 회피시간=0.34, 재사용대</text>
-<text fill="#cfe6d6" font-size="12" x="744" y="2706">기=1.2, 무적시간=0.25)</text>
-<rect fill="#10161c" height="68" stroke="#1f2a33" width="700" x="18" y="2724"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="2744">강공격 입력이 있는가</text>
-<path d="M718 2758.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="68" stroke="#2b4034" width="330" x="734" y="2724"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="2744">플레이어 강공격 (강공격피해=300, 기모으기=1, 강공격재</text>
-<text fill="#cfe6d6" font-size="12" x="744" y="2762">사용=5, 강공격사거리=520, 강공격탄속=900, 강공격탄반</text>
-<text fill="#cfe6d6" font-size="12" x="744" y="2780">경=34)</text>
-<rect fill="#10161c" height="50" stroke="#1f2a33" width="700" x="18" y="2798"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="2818">사격 입력이 있는가</text>
-<path d="M718 2823.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="50" stroke="#2b4034" width="330" x="734" y="2798"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="2818">플레이어 사격 (공격력=60, 발사간격=0.5, 사거리=440, </text>
-<text fill="#cfe6d6" font-size="12" x="744" y="2836">탄속도=1200, 탄반경=15, 이동정지시간=0.5)</text>
-<rect fill="#10161c" height="32" stroke="#1f2a33" width="700" x="18" y="2854"></rect>
-<text fill="#e7edf2" font-size="12" x="28" y="2874">이동 입력이 있는가</text>
-<path d="M718 2870.0 H734" fill="none" stroke="#1f2a33" stroke-width="1.5"></path>
-<rect fill="#0f1a14" height="32" stroke="#2b4034" width="330" x="734" y="2854"></rect>
-<text fill="#cfe6d6" font-size="12" x="744" y="2874">플레이어 이동</text>
+<div style="position:absolute;left:0;top:0;width:1102px;height:1420px;transform-origin:0 0;">
+<svg font-family="Galmuri11, monospace" height="1420" viewbox="0 0 1102 1420" width="1102" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#06070a" height="1420" width="1102"></rect>
+<rect fill="#0d1116" height="56" stroke="#4f7f8a" stroke-width="2" width="240" x="431" y="30"></rect>
+<text fill="#cfe6d6" font-size="20" text-anchor="middle" x="551" y="65">Selector · 보스 루트</text>
+<path d="M551 86 V 120" fill="none" stroke="#2a3843" stroke-width="2"></path>
+<path d="M200 120 H 902" fill="none" stroke="#2a3843" stroke-width="2"></path>
+<path d="M200 120 V 160 M551 120 V 160 M902 120 V 160" fill="none" stroke="#2a3843" stroke-width="2"></path>
+<rect fill="#0d1116" height="52" stroke="#8a6b45" stroke-width="2" width="220" x="90" y="160"></rect>
+<text fill="#c8ab84" font-size="18" text-anchor="middle" x="200" y="192">Sequence · 페이즈 1</text>
+<path d="M200 212 V 226 H 110 V 710" fill="none" stroke="#2a3843" stroke-width="2"></path>
+<path d="M110 262 h 16 M110 318 h 16 M110 374 h 16 M110 430 h 16 M110 486 h 16 M110 542 h 16 M110 598 h 16 M110 654 h 16 M110 710 h 16" fill="none" stroke="#2a3843" stroke-width="2"></path>
+<rect fill="#0d1116" height="44" stroke="#2a3843" stroke-width="2" width="184" x="126" y="240"></rect>
+<text fill="#8b98a2" font-size="15" x="140" y="268">P1-3 휘두르며 돌진</text>
+<rect fill="#0d1116" height="44" stroke="#2a3843" stroke-width="2" width="184" x="126" y="296"></rect>
+<text fill="#8b98a2" font-size="15" x="140" y="324">P1-2 내려찍기</text>
+<rect fill="#0d1116" height="44" stroke="#2a3843" stroke-width="2" width="184" x="126" y="352"></rect>
+<text fill="#8b98a2" font-size="15" x="140" y="380">P1-4 크게 휘두르기</text>
+<rect fill="#0d1116" height="44" stroke="#2a3843" stroke-width="2" width="184" x="126" y="408"></rect>
+<text fill="#8b98a2" font-size="15" x="140" y="436">P1-1 나무몽둥이 후리기</text>
+<rect fill="#0d1116" height="44" stroke="#2a3843" stroke-width="2" width="184" x="126" y="464"></rect>
+<text fill="#8b98a2" font-size="15" x="140" y="492">P1-5 대회전 (2타)</text>
+<rect fill="#0d1116" height="44" stroke="#2a3843" stroke-width="2" width="184" x="126" y="520"></rect>
+<text fill="#8b98a2" font-size="15" x="140" y="548">P1-6 위협 포효</text>
+<rect fill="#0d1116" height="44" stroke="#2a3843" stroke-width="2" width="184" x="126" y="576"></rect>
+<text fill="#8b98a2" font-size="15" x="140" y="604">P1-0 기본 공격 (몽둥이)</text>
+<rect fill="#0d1116" height="44" stroke="#2a3843" stroke-width="2" width="184" x="126" y="632"></rect>
+<text fill="#8b98a2" font-size="15" x="140" y="660">P1-9 돌 던지기</text>
+<rect fill="#0d1116" height="44" stroke="#2a3843" stroke-width="2" width="184" x="126" y="688"></rect>
+<text fill="#5d6a74" font-size="15" x="140" y="716">이동 · 접근 · 압박 (안전망)</text>
+<path d="M110 710 V 924" fill="none" stroke="#2a3843" stroke-width="2"></path>
+<rect fill="#0d1116" height="52" stroke="#d4623f" stroke-width="2" width="220" x="441" y="160"></rect>
+<text fill="#e8a184" font-size="18" text-anchor="middle" x="551" y="192">Sequence · 페이즈 2</text>
+<path d="M551 212 V 226 H 461 V 766" fill="none" stroke="#2a3843" stroke-width="2"></path>
+<path d="M461 262 h 16 M461 318 h 16 M461 374 h 16 M461 430 h 16 M461 486 h 16 M461 542 h 16 M461 598 h 16 M461 654 h 16 M461 710 h 16 M461 766 h 16" fill="none" stroke="#2a3843" stroke-width="2"></path>
+<rect fill="#0d1116" height="44" stroke="#2a3843" stroke-width="2" width="184" x="477" y="240"></rect>
+<text fill="#8b98a2" font-size="15" x="491" y="268">P2-1 들배지기</text>
+<rect fill="#0d1116" height="44" stroke="#2a3843" stroke-width="2" width="184" x="477" y="296"></rect>
+<text fill="#8b98a2" font-size="15" x="491" y="324">P2-4 잡채기</text>
+<rect fill="#0d1116" height="44" stroke="#2a3843" stroke-width="2" width="184" x="477" y="352"></rect>
+<text fill="#8b98a2" font-size="15" x="491" y="380">P2-5 되치기</text>
+<rect fill="#0d1116" height="44" stroke="#2a3843" stroke-width="2" width="184" x="477" y="408"></rect>
+<text fill="#8b98a2" font-size="15" x="491" y="436">상시 P2-1·P2-2·P2-3</text>
+<rect fill="#0d1116" height="44" stroke="#2a3843" stroke-width="2" width="184" x="477" y="464"></rect>
+<text fill="#8b98a2" font-size="15" x="491" y="492">P1-7 도깨비불</text>
+<rect fill="#0d1116" height="44" stroke="#2a3843" stroke-width="2" width="184" x="477" y="520"></rect>
+<text fill="#8b98a2" font-size="15" x="491" y="548">P1-5 대회전 (2타)</text>
+<rect fill="#0d1116" height="44" stroke="#2a3843" stroke-width="2" width="184" x="477" y="576"></rect>
+<text fill="#8b98a2" font-size="15" x="491" y="604">P1-6 위협 포효</text>
+<rect fill="#0d1116" height="44" stroke="#2a3843" stroke-width="2" width="184" x="477" y="632"></rect>
+<text fill="#8b98a2" font-size="15" x="491" y="660">P2-0 기본 공격 (장타)</text>
+<rect fill="#0d1116" height="44" stroke="#2a3843" stroke-width="2" width="184" x="477" y="688"></rect>
+<text fill="#8b98a2" font-size="15" x="491" y="716">P2-7 불덩이</text>
+<rect fill="#0d1116" height="44" stroke="#2a3843" stroke-width="2" width="184" x="477" y="744"></rect>
+<text fill="#5d6a74" font-size="15" x="491" y="772">이동 · 접근 · 압박 (안전망)</text>
+<path d="M461 766 V 924" fill="none" stroke="#2a3843" stroke-width="2"></path>
+<rect fill="#0d1116" height="52" stroke="#4f7f8a" stroke-width="2" width="220" x="792" y="160"></rect>
+<text fill="#a7cbd4" font-size="18" text-anchor="middle" x="902" y="192">Sequence · 페이즈 3</text>
+<path d="M902 212 V 226 H 812 V 878" fill="none" stroke="#2a3843" stroke-width="2"></path>
+<path d="M812 262 h 16 M812 318 h 16 M812 374 h 16 M812 430 h 16 M812 486 h 16 M812 542 h 16 M812 598 h 16 M812 654 h 16 M812 710 h 16 M812 766 h 16 M812 822 h 16 M812 878 h 16" fill="none" stroke="#2a3843" stroke-width="2"></path>
+<rect fill="#0d1116" height="44" stroke="#2a3843" stroke-width="2" width="184" x="828" y="240"></rect>
+<text fill="#8b98a2" font-size="15" x="842" y="268">P3-3 철퇴 내려찍기</text>
+<rect fill="#0d1116" height="44" stroke="#2a3843" stroke-width="2" width="184" x="828" y="296"></rect>
+<text fill="#8b98a2" font-size="15" x="842" y="324">P3-5 얼음 유도탄</text>
+<rect fill="#0d1116" height="44" stroke="#2a3843" stroke-width="2" width="184" x="828" y="352"></rect>
+<text fill="#8b98a2" font-size="15" x="842" y="380">P1-4 크게 휘두르기</text>
+<rect fill="#0d1116" height="44" stroke="#2a3843" stroke-width="2" width="184" x="828" y="408"></rect>
+<text fill="#8b98a2" font-size="15" x="842" y="436">P2-4 잡채기</text>
+<rect fill="#0d1116" height="44" stroke="#2a3843" stroke-width="2" width="184" x="828" y="464"></rect>
+<text fill="#8b98a2" font-size="15" x="842" y="492">P2-5 되치기</text>
+<rect fill="#0d1116" height="44" stroke="#2a3843" stroke-width="2" width="184" x="828" y="520"></rect>
+<text fill="#8b98a2" font-size="15" x="842" y="548">상시 P3-1·P3-2</text>
+<rect fill="#0d1116" height="44" stroke="#2a3843" stroke-width="2" width="184" x="828" y="576"></rect>
+<text fill="#8b98a2" font-size="15" x="842" y="604">상시 P1-1·P2-2·P2-3</text>
+<rect fill="#0d1116" height="44" stroke="#2a3843" stroke-width="2" width="184" x="828" y="632"></rect>
+<text fill="#8b98a2" font-size="15" x="842" y="660">P1-6 위협 포효</text>
+<rect fill="#0d1116" height="44" stroke="#2a3843" stroke-width="2" width="184" x="828" y="688"></rect>
+<text fill="#8b98a2" font-size="15" x="842" y="716">P3-4 도깨비방망이</text>
+<rect fill="#0d1116" height="44" stroke="#2a3843" stroke-width="2" width="184" x="828" y="744"></rect>
+<text fill="#8b98a2" font-size="15" x="842" y="772">P3-0 기본 공격 (철퇴)</text>
+<rect fill="#0d1116" height="44" stroke="#2a3843" stroke-width="2" width="184" x="828" y="800"></rect>
+<text fill="#8b98a2" font-size="15" x="842" y="828">P3-6 얼음 살촉</text>
+<rect fill="#0d1116" height="44" stroke="#2a3843" stroke-width="2" width="184" x="828" y="856"></rect>
+<text fill="#5d6a74" font-size="15" x="842" y="884">이동 · 접근 · 압박 (안전망)</text>
+<path d="M812 878 V 924" fill="none" stroke="#2a3843" stroke-width="2"></path>
+<path d="M110 924 H 812" fill="none" stroke="#2a3843" stroke-width="2"></path>
+<path d="M225 924 V 968 M560 924 V 968 M890 924 V 968" fill="none" stroke="#2a3843" stroke-width="2"></path>
+<rect fill="#0d1116" height="250" stroke="#4f7f8a" stroke-width="2" width="330" x="60" y="968"></rect>
+<text fill="#4f7f8a" font-size="14" x="78" y="998">Service</text>
+<text fill="#cfe6d6" font-size="17" x="149" y="998">보스 능력치</text>
+<text fill="#6b7a85" font-size="14" x="78" y="1030">최대체력</text>
+<rect fill="#131a21" height="26" stroke="#2a3843" stroke-width="2" width="120" x="244" y="1012"></rect>
+<text fill="#e7edf2" font-size="14" x="254" y="1031">25000</text>
+<text fill="#6b7a85" font-size="14" x="78" y="1072">이동속도</text>
+<rect fill="#131a21" height="26" stroke="#2a3843" stroke-width="2" width="120" x="244" y="1054"></rect>
+<text fill="#e7edf2" font-size="14" x="254" y="1073">220</text>
+<text fill="#6b7a85" font-size="14" x="78" y="1114">무력화만충</text>
+<rect fill="#131a21" height="26" stroke="#2a3843" stroke-width="2" width="120" x="244" y="1096"></rect>
+<text fill="#e7edf2" font-size="14" x="254" y="1115">1000</text>
+<text fill="#6b7a85" font-size="14" x="78" y="1156">다운시간</text>
+<rect fill="#131a21" height="26" stroke="#2a3843" stroke-width="2" width="120" x="244" y="1138"></rect>
+<text fill="#e7edf2" font-size="14" x="254" y="1157">5</text>
+<text fill="#6b7a85" font-size="14" x="78" y="1198">P1/P2/P3사거리</text>
+<rect fill="#131a21" height="26" stroke="#2a3843" stroke-width="2" width="44" x="228" y="1180"></rect>
+<text fill="#e7edf2" font-size="14" x="238" y="1199">160</text>
+<rect fill="#131a21" height="26" stroke="#2a3843" stroke-width="2" width="44" x="276" y="1180"></rect>
+<text fill="#e7edf2" font-size="14" x="286" y="1199">140</text>
+<rect fill="#131a21" height="26" stroke="#2a3843" stroke-width="2" width="44" x="324" y="1180"></rect>
+<text fill="#e7edf2" font-size="14" x="334" y="1199">180</text>
+<rect fill="#0d1116" height="166" stroke="#4f7f8a" stroke-width="2" width="300" x="410" y="968"></rect>
+<text fill="#4f7f8a" font-size="14" x="428" y="998">Modifier</text>
+<text fill="#cfe6d6" font-size="17" x="508" y="998">추격 압박</text>
+<text fill="#6b7a85" font-size="14" x="428" y="1030">유예초</text>
+<rect fill="#131a21" height="26" stroke="#2a3843" stroke-width="2" width="52" x="500" y="1012"></rect>
+<text fill="#e7edf2" font-size="14" x="510" y="1031">1.5</text>
+<text fill="#6b7a85" font-size="14" x="560" y="1030">가속초</text>
+<rect fill="#131a21" height="26" stroke="#2a3843" stroke-width="2" width="52" x="632" y="1012"></rect>
+<text fill="#e7edf2" font-size="14" x="642" y="1031">3.5</text>
+<text fill="#6b7a85" font-size="14" x="428" y="1072">추격배율</text>
+<rect fill="#131a21" height="26" stroke="#2a3843" stroke-width="2" width="52" x="500" y="1054"></rect>
+<text fill="#e7edf2" font-size="14" x="510" y="1073">1.6</text>
+<text fill="#6b7a85" font-size="14" x="560" y="1072">돌진임계</text>
+<rect fill="#131a21" height="26" stroke="#2a3843" stroke-width="2" width="52" x="632" y="1054"></rect>
+<text fill="#e7edf2" font-size="14" x="642" y="1073">4.5</text>
+<text fill="#6b7a85" font-size="14" x="428" y="1114">사거리배수</text>
+<rect fill="#131a21" height="26" stroke="#2a3843" stroke-width="2" width="52" x="500" y="1096"></rect>
+<text fill="#e7edf2" font-size="14" x="510" y="1115">1.6</text>
+<text fill="#6b7a85" font-size="14" x="560" y="1114">식힘배속</text>
+<rect fill="#131a21" height="26" stroke="#2a3843" stroke-width="2" width="52" x="632" y="1096"></rect>
+<text fill="#e7edf2" font-size="14" x="642" y="1115">2</text>
+<rect fill="#0d1116" height="198" stroke="#4f7f8a" stroke-width="2" width="320" x="730" y="968"></rect>
+<text fill="#4f7f8a" font-size="14" x="748" y="998">Action</text>
+<text fill="#cfe6d6" font-size="17" x="810" y="998">패턴 시전</text>
+<text fill="#6b7a85" font-size="14" x="748" y="1030">Pattern</text>
+<rect fill="#131a21" height="30" stroke="#2a3843" stroke-width="2" width="284" x="748" y="1040"></rect>
+<text fill="#e7edf2" font-size="15" x="760" y="1061">P3-3 철퇴 내려찍기</text>
+<text fill="#6b7a85" font-size="14" x="748" y="1104">예고</text>
+<rect fill="#131a21" height="26" stroke="#2a3843" stroke-width="2" width="56" x="826" y="1086"></rect>
+<text fill="#e7edf2" font-size="14" x="836" y="1105">0.8</text>
+<text fill="#6b7a85" font-size="14" x="890" y="1104">여운</text>
+<rect fill="#131a21" height="26" stroke="#2a3843" stroke-width="2" width="56" x="968" y="1086"></rect>
+<text fill="#e7edf2" font-size="14" x="978" y="1105">1.4</text>
+<text fill="#6b7a85" font-size="14" x="748" y="1146">반경</text>
+<rect fill="#131a21" height="26" stroke="#2a3843" stroke-width="2" width="56" x="826" y="1128"></rect>
+<text fill="#e7edf2" font-size="14" x="836" y="1147">408</text>
+<text fill="#6b7a85" font-size="14" x="890" y="1146">피해</text>
+<rect fill="#131a21" height="26" stroke="#2a3843" stroke-width="2" width="56" x="968" y="1128"></rect>
+<text fill="#e7edf2" font-size="14" x="978" y="1147">140</text>
+<rect fill="#0d1116" height="166" stroke="#4f7f8a" stroke-width="2" width="300" x="410" y="1194"></rect>
+<text fill="#4f7f8a" font-size="14" x="428" y="1224">Modifier</text>
+<text fill="#cfe6d6" font-size="17" x="508" y="1224">어글자를 압박</text>
+<text fill="#6b7a85" font-size="14" x="428" y="1256">맴돌기배율</text>
+<rect fill="#131a21" height="26" stroke="#2a3843" stroke-width="2" width="120" x="564" y="1238"></rect>
+<text fill="#e7edf2" font-size="14" x="574" y="1257">0.55</text>
+<text fill="#6b7a85" font-size="14" x="428" y="1298">뒤집기주기</text>
+<rect fill="#131a21" height="26" stroke="#2a3843" stroke-width="2" width="120" x="564" y="1280"></rect>
+<text fill="#e7edf2" font-size="14" x="574" y="1299">2.6</text>
+<text fill="#6b7a85" font-size="14" x="428" y="1340">몸틀기</text>
+<rect fill="#131a21" height="26" stroke="#2a3843" stroke-width="2" width="120" x="564" y="1322"></rect>
+<text fill="#e7edf2" font-size="14" x="574" y="1341">0.4</text>
+<path d="M560 1134 V 1194" fill="none" stroke="#2a3843" stroke-width="2"></path>
+<text fill="#5d6a74" font-size="14" text-anchor="middle" x="551" y="1396">보스 트리 전부 · 위에서 아래가 곧 우선순위입니다 (BT 덤프에서 바로 그립니다)</text>
 </svg>
 </div>
 </div>
