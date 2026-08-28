@@ -1,0 +1,90 @@
+/* 이돈휘 포트폴리오 — 시안에 없던 것만 여기에 둔다.
+   시안이 만든 규칙은 design.css 에 그대로 있고, 이 파일은 그 위에 얹는다.
+   재생성: python tools/build_site.py */
+
+/* ── 서체 ───────────────────────────────────────────────
+   Galmuri11 (SIL OFL 1.1, quiple/galmuri) — 도트 톤의 뼈대다.
+   웹폰트가 늦게 와도 글이 사라지지 않게 swap 을 쓴다. */
+@font-face {
+  font-family: 'Galmuri11';
+  src: url('../assets/font/Galmuri11.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Galmuri11';
+  src: url('../assets/font/Galmuri11-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+
+/* ── 건너뛰기 링크 (키보드) ───────────────────────────── */
+.skip {
+  position: absolute; left: -9999px; top: 0; z-index: 999;
+  padding: 12px 18px; background: #d4623f; color: #0e0d0b;
+  font-family: 'Galmuri11', monospace; font-size: 13px;
+}
+.skip:focus { left: 0; }
+
+/* ── 영상 ──────────────────────────────────────────────
+   전부 무음·자동 반복이다. 화면에 들어올 때만 재생한다 (main.js). */
+video[data-src], video[src] {
+  display: block; width: 100%; height: 100%;
+  object-fit: cover;
+  background: #06070a;
+  image-rendering: pixelated;   /* 도트 필터를 살린다 — 보간하면 뭉갠다 */
+}
+.v-box { position: relative; overflow: hidden; background: #06070a; }
+.v-badge {
+  position: absolute; right: 8px; bottom: 8px; z-index: 2;
+  padding: 3px 7px; background: rgba(6,7,10,.72);
+  border: 1px solid #26313a;
+  font-family: 'Galmuri11', monospace; font-size: 12px; color: #8b8375;
+  pointer-events: none;
+}
+
+/* ── 좌측 인덱스: 지금 보고 있는 곳 ──────────────────── */
+aside[data-side-index] a[aria-current="true"] { color: #f4eee1 !important; }
+aside[data-side-index] a[aria-current="true"] [data-navbar] {
+  width: 26px !important; background: #d4623f !important;
+}
+
+/* ── BT 뷰어: 끌어서 옮기고 휠로 확대 ────────────────── */
+#bt-viewer { cursor: grab; touch-action: none; overscroll-behavior: contain; }
+#bt-viewer.is-drag { cursor: grabbing; }
+#bt-viewer > div:first-child { transform-origin: 0 0; will-change: transform; }
+@media (prefers-reduced-motion: reduce) { #bt-viewer > div:first-child { transition: none !important; } }
+
+/* ── 기믹 카드: 노드에 올리면 그 줄만 밝아진다 ───────── */
+[data-gimcard] [data-line] { transition: opacity 90ms steps(3, end), background 90ms steps(3, end); }
+[data-gimcard].is-peek [data-line] { opacity: .28; }
+[data-gimcard].is-peek [data-line].is-lit { opacity: 1; background: #10161c; }
+[data-btnode] { cursor: pointer !important; }
+[data-btnode]:focus-visible { outline: 2px dashed #d4623f; outline-offset: 2px; }
+
+/* ── 클릭해서 불러오는 iframe (남의 서버라 눌러야 부른다) ── */
+.embed { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: #0b0a08; }
+.embed-note {
+  padding: 10px 2px 0;
+  font-family: 'Galmuri11', monospace; font-size: 12px; color: #8b8375; line-height: 1.8;
+}
+
+/* ── 이미지 기본 ──────────────────────────────────────── */
+img { max-width: 100%; }
+.fit-contain { object-fit: contain !important; background: #0b0a08; }
+
+/* ── 좁은 화면 ────────────────────────────────────────
+   시안이 리드 문단에 max-width:620px 를 걸어 두었는데 375px 에서
+   그 값이 그대로 남아 오른쪽이 잘렸다 (실측 — 오른쪽 끝 640px). */
+@media (max-width: 767px) {
+  section p, section h2, section h3 { max-width: 100% !important; }
+  [data-loop-wrap] { min-width: 0 !important; }
+  .embed-note { font-size: 12px; }
+}
+
+/* ── 인쇄 (PDF 로 뽑아 보는 사람이 있다) ──────────────── */
+@media print {
+  aside[data-side-index], .skip { display: none !important; }
+  section { break-inside: avoid; }
+  video { display: none !important; }
+}

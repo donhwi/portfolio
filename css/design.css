@@ -1,0 +1,60 @@
+/* 클로드 디자인 시안이 만든 규칙. 손으로 고치지 말고 시안을 고친 뒤 다시 굽는다.
+   출처: _workspace/2026-08-28-시안10차 */
+html { scroll-behavior: smooth; background: #0a0c10; }
+  body { margin: 0; background: #0a0c10; color: #ece5d6; font-family: 'Noto Sans KR', sans-serif; font-weight: 300; -webkit-font-smoothing: antialiased; word-break: keep-all; overflow-wrap: break-word; }
+  * { box-sizing: border-box; }
+  a { color: #d4623f; text-decoration: none; }
+  a:hover { color: #e88a68; }
+  ::selection { background: #c8452a; color: #f7f1e4; }
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: #0a0c10; }
+  ::-webkit-scrollbar-thumb { background: #2a251c; border: 2px solid #0a0c10; }
+  @keyframes dotBlink { 0%, 45% { opacity: 1 } 50%, 100% { opacity: .12 } }
+  a:focus-visible, button:focus-visible { outline: 2px dashed #d4623f; outline-offset: 2px; }
+  [data-cta]:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 #6a2415 !important; background: #e8734d !important; }
+  [data-cta]:active { transform: translate(4px, 4px); box-shadow: none !important; background: #b8512f !important; }
+  [data-ghost]:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 #0a0908; color: #f4eee1 !important; background: #1f1c16 !important; }
+  [data-ghost]:active { transform: translate(4px, 4px); box-shadow: none; }
+  [data-lift]:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 #05060a; }
+  [data-lift]:active { transform: translate(0, 0); box-shadow: none; }
+  [data-btbtn]:hover { border-color: #4f7f8a !important; color: #cfe6d6 !important; background: #111a20 !important; }
+  [data-btbtn]:active { transform: translate(0, 2px); }
+  [data-ext]:hover { border-color: #d4623f !important; color: #e88a68 !important; }
+  aside[data-side-index] a:hover { color: #f4eee1 !important; }
+  aside[data-side-index] a:hover [data-navbar] { width: 26px !important; background: #d4623f !important; }
+  [data-btbtn]::before { content: "▶"; display: inline-block; width: 0; overflow: hidden; opacity: 0; transition: all 90ms steps(3, end); }
+  [data-btbtn]:hover::before { width: 20px; opacity: 1; }
+  [data-btnode]:hover { background-image: repeating-linear-gradient(180deg, rgba(126,201,143,.16) 0 1px, transparent 1px 2px); }
+  [data-gimcard] { transition: transform 90ms steps(3, end), box-shadow 90ms steps(3, end), border-color 90ms steps(3, end); }
+  [data-gimcard]:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 #05070a; }
+  [data-gimcard]:active { transform: translate(0, 0); box-shadow: none; }
+  section p a, section span a, li a { text-decoration: underline dotted; text-underline-offset: 3px; }
+  section p a:hover, section span a:hover, li a:hover { text-decoration: underline solid; color: #f4eee1; }
+  section p a:active, section span a:active, li a:active { color: #d4623f; }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+  @media (max-width: 1399px) {
+    aside[data-side-index] { display: none !important; }
+    section > div, footer > div { padding-left: 32px !important; }
+    [data-breakout] { margin-left: 0 !important; }
+  }
+  @media (max-width: 1099px) {
+    [data-stack="summary"] { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+    [data-stack="bttiles"] { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  }
+  @media (max-width: 767px) {
+    [data-stack] { grid-template-columns: 1fr !important; gap: 14px !important; }
+    [data-breakout] { grid-template-columns: 1fr !important; }
+    [data-stack="gimtop"] > div, [data-stack="gimbot"] > div { border-right: none !important; }
+    [data-stack="gimtop"] > div:first-child, [data-stack="gimbot"] > div:first-child { border-bottom: 2px solid #1b2329 !important; }
+    [data-stack="skillhead"] { display: none !important; }
+    [data-stack="skillrow"] { padding: 16px 20px !important; }
+    [data-phase-grid] { grid-template-columns: 1fr !important; }
+    [data-loop-wrap] { min-width: 0 !important; }
+    [data-loop-row] { flex-direction: column !important; }
+    [data-loop-arrow] { flex: none !important; width: 100%; padding: 10px 0 !important; }
+    [data-loop-arrow] > span:last-child { width: 60% !important; }
+    [data-loop-cap] { flex: none !important; flex-direction: row !important; gap: 10px !important; padding: 8px 0 !important; }
+    [data-loop-cap] > span:last-child { flex: 1 !important; width: auto !important; height: 2px !important; background: repeating-linear-gradient(90deg, #2a3843 0 6px, transparent 6px 12px) !important; }
+    section, footer > div { padding-left: 20px !important; padding-right: 20px !important; }
+    section > div, footer > div { padding-left: 0 !important; padding-right: 0 !important; }
+  }
