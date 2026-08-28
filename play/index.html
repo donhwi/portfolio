@@ -1,70 +1,160 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>도깨비 보스전 · WebGL</title>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>도깨비 보스전 · WebGL 알파</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+  
 <style>
-  html, body { margin: 0; height: 100%; background: #06070a; overflow: hidden;
-    font-family: 'Galmuri11', 'Malgun Gothic', monospace; color: #b4a893; }
-  #wrap { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; }
-  canvas { display: block; width: 100%; height: 100%; background: #06070a; }
-  #load { position: fixed; inset: 0; display: flex; flex-direction: column;
-    align-items: center; justify-content: center; gap: 16px; padding: 24px; text-align: center; }
-  #bar { width: min(320px, 70vw); height: 12px; border: 2px solid #2a3843; background: #0b0e12; }
-  #fill { height: 100%; width: 0; background: #d4623f; transition: width 120ms steps(4, end); }
-  #pct { font-size: 12px; color: #8b8375; }
-  #msg { font-size: 12px; line-height: 1.9; color: #8b8375; max-width: 34em; }
-  .warn { color: #d4623f; }
+  html, body { margin: 0; height: 100%; background: #06070a; overflow: hidden; }
+  #unity-container { position: fixed; inset: 0; width: 100%; height: 100%; }
+  #unity-canvas { display: block; background: #06070a; }
+  #unity-footer { display: none !important; }
+  #unity-loading-bar { position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+  #unity-progress-bar-empty { width: min(320px, 70vw); height: 12px; margin: 14px auto 0;
+    border: 2px solid #2a3843; background: #0b0e12; }
+  #unity-progress-bar-full { height: 100%; background: #d4623f; }
+  #unity-logo { display: none; }
+  #unity-warning { position: fixed; left: 50%; top: 12px; transform: translateX(-50%);
+    font-family: monospace; font-size: 13px; }
 </style>
 </head>
-<body>
-<div id="wrap"><canvas id="c" tabindex="-1"></canvas></div>
-<div id="load">
-  <div style="font-size:13px;color:#f4eee1">도깨비 보스전 · 알파 빌드</div>
-  <div id="bar"><div id="fill"></div></div>
-  <div id="pct">0%</div>
-  <div id="msg">약 42MB 를 받습니다. 처음 한 번만 받고 다음부터는 브라우저가 갖고 있습니다.<br>
-    W A S D 이동 · 좌클릭 사격 · 우클릭 강공격 · Space 회피 · F2 페이즈 이동 · F3 배속</div>
-</div>
-<script>
-var canvas = document.querySelector("#c");
-var load = document.querySelector("#load");
-var fill = document.querySelector("#fill");
-var pct = document.querySelector("#pct");
-var msg = document.querySelector("#msg");
+  <body>
+    <div id="unity-container" class="unity-desktop">
+      <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
+      <div id="unity-loading-bar">
+        <div id="unity-logo"></div>
+        <div id="unity-progress-bar-empty">
+          <div id="unity-progress-bar-full"></div>
+        </div>
+      </div>
+      <div id="unity-warning"> </div>
+      <div id="unity-footer">
+        <div id="unity-logo-title-footer"></div>
+        <div id="unity-fullscreen-button"></div>
+        <div id="unity-build-title">DokkaebiAlpha</div>
+      </div>
+    </div>
+    <script>
+      var canvas = document.querySelector("#unity-canvas");
 
-// loader.js 를 먼저 받아야 createUnityInstance 가 생긴다
-var s = document.createElement("script");
-s.src = "Build/WebGL.loader.js";
-s.onerror = function () { msg.innerHTML = '<span class="warn">로더를 받지 못했습니다.</span>'; };
-s.onload = boot;
-document.body.appendChild(s);
+      // Shows a temporary message banner/ribbon for a few seconds, or
+      // a permanent error message on top of the canvas if type=='error'.
+      // If type=='warning', a yellow highlight color is used.
+      // Modify or remove this function to customize the visually presented
+      // way that non-critical warnings and error messages are presented to the
+      // user.
+      function unityShowBanner(msg, type) {
+        var warningBanner = document.querySelector("#unity-warning");
+        function updateBannerVisibility() {
+          warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
+        }
+        var div = document.createElement('div');
+        div.innerHTML = msg;
+        warningBanner.appendChild(div);
+        if (type == 'error') div.style = 'background: red; padding: 10px;';
+        else {
+          if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
+          setTimeout(function() {
+            warningBanner.removeChild(div);
+            updateBannerVisibility();
+          }, 5000);
+        }
+        updateBannerVisibility();
+      }
 
-function boot() {
-createUnityInstance(canvas, {
-  dataUrl: "Build/WebGL.data.unityweb",
-  frameworkUrl: "Build/WebGL.framework.js.unityweb",
-  codeUrl: "Build/WebGL.wasm.unityweb",
-  streamingAssetsUrl: "StreamingAssets",
-  companyName: "donhwi",
-  productName: "도깨비 보스전",
-  productVersion: "0.1.0",
-  autoSyncPersistentDataPath: true,
-  showBanner: function () {}
-}, function (p) {
-  var v = Math.round(p * 100);
-  fill.style.width = v + "%";
-  pct.textContent = v + "%";
-}).then(function () {
-  load.remove();
-  canvas.focus();
-}).catch(function (e) {
-  pct.textContent = "";
-  msg.innerHTML = '<span class="warn">불러오지 못했습니다.</span><br>' +
-    String(e).slice(0, 300);
-});
-}
-</script>
-</body>
+      var buildUrl = "Build";
+      var loaderUrl = buildUrl + "/WebGL.loader.js";
+      var config = {
+        arguments: [],
+        dataUrl: buildUrl + "/WebGL.data.unityweb",
+        frameworkUrl: buildUrl + "/WebGL.framework.js.unityweb",
+        codeUrl: buildUrl + "/WebGL.wasm.unityweb",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "DefaultCompany",
+        productName: "DokkaebiAlpha",
+        productVersion: "0.1.0",
+        showBanner: unityShowBanner,
+        // errorHandler: function(err, url, line) {
+        //    alert("error " + err + " occurred at line " + line);
+        //    // Return 'true' if you handled this error and don't want Unity
+        //    // to process it further, 'false' otherwise.
+        //    return true;
+        // },
+      };
+
+      // By default, Unity keeps WebGL canvas render target size matched with
+      // the DOM size of the canvas element (scaled by window.devicePixelRatio)
+      // Set this to false if you want to decouple this synchronization from
+      // happening inside the engine, and you would instead like to size up
+      // the canvas DOM size and WebGL render target sizes yourself.
+      // config.matchWebGLToCanvasSize = false;
+
+      // If you would like all file writes inside Unity Application.persistentDataPath
+      // directory to automatically persist so that the contents are remembered when
+      // the user revisits the site the next time, uncomment the following line:
+      // config.autoSyncPersistentDataPath = true;
+      // This autosyncing is currently not the default behavior to avoid regressing
+      // existing user projects that might rely on the earlier manual
+      // JS_FileSystem_Sync() behavior, but in future Unity version, this will be
+      // expected to change.
+
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        // Mobile device style: fill the whole browser client area with the game canvas:
+
+        var meta = document.createElement('meta');
+        meta.name = 'viewport';
+        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+        document.getElementsByTagName('head')[0].appendChild(meta);
+        document.querySelector("#unity-container").className = "unity-mobile";
+        canvas.className = "unity-mobile";
+
+        // To lower canvas resolution on mobile devices to gain some
+        // performance, uncomment the following line:
+        // config.devicePixelRatio = 1;
+
+
+      } else {
+        // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
+        (function fit() {
+          var set = function () {
+            var w = Math.max(320, window.innerWidth);
+            var h = Math.max(180, window.innerHeight);
+            var dpr = Math.min(window.devicePixelRatio || 1, 2);
+            canvas.style.width = w + "px";
+            canvas.style.height = h + "px";
+            // 버퍼(canvas.width)까지 직접 맞춘다. 유니티가 스스로 따라오지 않았다 —
+            // CSS 만 1920 으로 키우면 버퍼는 960 에 머물러 흐릿하게 늘어난다 (실측)
+            canvas.width = Math.round(w * dpr);
+            canvas.height = Math.round(h * dpr);
+          };
+          set();
+          window.addEventListener("resize", set);
+        })();
+      }
+
+      document.querySelector("#unity-loading-bar").style.display = "block";
+
+      var script = document.createElement("script");
+      script.src = loaderUrl;
+      script.onload = () => {
+        createUnityInstance(canvas, config, (progress) => {
+          document.querySelector("#unity-progress-bar-full").style.width = 100 * progress + "%";
+              }).then((unityInstance) => {
+                document.querySelector("#unity-loading-bar").style.display = "none";
+                document.querySelector("#unity-fullscreen-button").onclick = () => {
+                  unityInstance.SetFullscreen(1);
+                };
+
+              }).catch((message) => {
+                alert(message);
+              });
+            };
+
+      document.body.appendChild(script);
+
+    </script>
+  </body>
 </html>
