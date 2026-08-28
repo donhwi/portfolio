@@ -1,0 +1,37 @@
+# 정적 사이트를 그대로 GitHub Pages 로 올린다. 빌드 단계가 없다 —
+# site/ 자체가 이미 배포 산출물이다 (굽는 것은 로컬의 tools/build_site.py).
+#
+# configure-pages 의 enablement: true 가 Pages 를 켜 준다.
+# 저장소 Settings 를 손으로 만지지 않아도 첫 실행에서 켜지고 주소가 나온다.
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+      - id: deployment
+        uses: actions/deploy-pages@v4
