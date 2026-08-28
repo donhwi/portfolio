@@ -33,17 +33,14 @@ python -m http.server 8733 --directory site
 
 ## GitHub Pages 로 올리기
 
-저장소가 아직 없다. 하나 만들고(공개) 아래를 돌리면 끝난다.
+저장소는 <https://github.com/donhwi/portfolio> 이고 `main` 에 올라가 있다.
+고친 뒤에는 `git push` 한 줄이면 된다.
 
-```bash
-cd site
-git remote add origin https://github.com/donhwi/portfolio.git
-git branch -M main
-git push -u origin main
-```
+Pages 는 **Settings → Pages → Source: Deploy from a branch → main / (root)** 로 켠다.
+1~2분 뒤 <https://donhwi.github.io/portfolio/> 에서 열린다.
 
-그다음 저장소 **Settings → Pages → Source: Deploy from a branch → main / (root)** 로 두면
-`https://donhwi.github.io/portfolio/` 에서 열린다. 1~2분 걸린다.
+> 워크플로로 Pages 를 자동으로 켜 보려 했으나 `actions/configure-pages` 의 `enablement` 가
+> 기본 `GITHUB_TOKEN` 권한으로 거부됐다. 토글이 더 짧아 워크플로는 걷어냈다.
 
 **계정 없이 더 빨리 보고 싶으면**: <https://app.netlify.com/drop> 에 `site` 폴더를 통째로 끌어다 놓으면
 바로 공개 주소가 나온다. `_artifact/` 는 빼고 올리는 편이 좋다 (8MB짜리 사본이다).
