@@ -19,7 +19,43 @@
   #unity-logo { display: none; }
   #unity-warning { position: fixed; left: 50%; top: 12px; transform: translateX(-50%);
     font-family: monospace; font-size: 13px; }
+  #diag { position: fixed; left: 0; right: 0; top: 0; z-index: 99; max-height: 40vh;
+    overflow: auto; padding: 8px 12px; background: rgba(60,10,6,.92); color: #ffd9cf;
+    font-family: monospace; font-size: 12px; line-height: 1.6; white-space: pre-wrap; }
 </style>
+<script>
+// 화면이 안 나올 때 개발자 도구를 열지 않고도 원인을 볼 수 있게, 오류를 화면 위에 찍는다.
+// 유니티 WebGL 의 Debug.LogError 는 console.error 로 나온다.
+(function () {
+  var box = null;
+  function show(msg) {
+    if (!box) {
+      box = document.createElement("div");
+      box.id = "diag";
+      document.documentElement.appendChild(box);
+    }
+    var d = document.createElement("div");
+    d.textContent = String(msg).slice(0, 400);
+    box.appendChild(d);
+    while (box.children.length > 10) box.removeChild(box.firstChild);
+  }
+  var ce = console.error;
+  console.error = function () { show([].slice.call(arguments).join(" ")); return ce.apply(console, arguments); };
+  var cw = console.warn;
+  console.warn = function () {
+    var s = [].slice.call(arguments).join(" ");
+    if (/shader|GLSL|not supported|failed|exceeds/i.test(s)) show(s);
+    return cw.apply(console, arguments);
+  };
+  var cl = console.log;
+  console.log = function () {
+    var s = [].slice.call(arguments).join(" ");
+    if (/ERROR|GLSL|not supported|failed|exceeds/i.test(s)) show(s);
+    return cl.apply(console, arguments);
+  };
+  window.addEventListener("error", function (e) { show(e.message); });
+})();
+</script>
 </head>
   <body>
     <div id="unity-container" class="unity-desktop">
