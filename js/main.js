@@ -15,6 +15,16 @@
     function src(v) {
       return (window.__M && window.__M[v.dataset.src]) || v.dataset.src;
     }
+    // 「움직임 줄이기」를 켠 사람에게 배경 영상 아홉 개가 저절로 돌면 안 된다.
+    // 포스터를 그대로 두고, 보고 싶으면 직접 틀 수 있게 조작 막대를 단다.
+    if (reduce) {
+      vs.forEach(function (v) {
+        v.controls = true;
+        v.preload = 'none';
+        v.addEventListener('click', function () { if (!v.src) v.src = src(v); }, { once: true });
+      });
+      return;
+    }
     if (!('IntersectionObserver' in window)) {
       vs.forEach(function (v) { v.src = src(v); });
       return;
