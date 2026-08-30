@@ -28,7 +28,26 @@
 // 유니티 WebGL 의 Debug.LogError 는 console.error 로 나온다.
 (function () {
   var box = null, tail = null, seen = 0, kept = 0, KEEP = 30;
+
+  // 알고 있고 화면에 영향이 없는 것들. 이걸 안 거르면 방문자에게 붉은 띠만 보인다.
+  //  · OnTrigger*2D — 2D 물리 메시지를 3D 콜라이더가 무시한다는 알림
+  //  · VoxelizeShader — APV 굽기용 에디터 셰이더. 런타임에 안 쓴다
+  //  · Edge Adaptive Spatial Upsampling — 후처리를 건너뛴다는 알림 (일부러 안 켰다)
+  var KNOWN = [
+    /OnTrigger(Enter|Exit|Stay)2D/,
+    /This message parameter has to be of type/,
+    /The message will be ignored/,
+    /VoxelizeShader/,
+    /Edge Adaptive Spatial Upsampling/,
+    /^ERROR: Shader\s*$/,
+  ];
+  function known(s) {
+    for (var i = 0; i < KNOWN.length; i++) if (KNOWN[i].test(s)) return true;
+    return false;
+  }
+
   function show(msg) {
+    if (known(String(msg).trim())) return;
     seen++;
     if (!box) {
       box = document.createElement("div");
