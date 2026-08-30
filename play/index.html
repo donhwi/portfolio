@@ -27,17 +27,25 @@
 // 화면이 안 나올 때 개발자 도구를 열지 않고도 원인을 볼 수 있게, 오류를 화면 위에 찍는다.
 // 유니티 WebGL 의 Debug.LogError 는 console.error 로 나온다.
 (function () {
-  var box = null;
+  var box = null, tail = null, seen = 0, kept = 0, KEEP = 30;
   function show(msg) {
+    seen++;
     if (!box) {
       box = document.createElement("div");
       box.id = "diag";
       document.documentElement.appendChild(box);
+      tail = document.createElement("div");
+      tail.style.cssText = "margin-top:6px;color:#ff9d84";
+      box.appendChild(tail);
     }
-    var d = document.createElement("div");
-    d.textContent = String(msg).slice(0, 400);
-    box.appendChild(d);
-    while (box.children.length > 10) box.removeChild(box.firstChild);
+    // **처음 것부터** 남긴다. 첫 실패가 나머지를 설명하고, 뒤는 대개 같은 말의 반복이다
+    if (kept < KEEP) {
+      var d = document.createElement("div");
+      d.textContent = String(msg).slice(0, 400);
+      box.insertBefore(d, tail);
+      kept++;
+    }
+    tail.textContent = "… 모두 " + seen + "건 (처음 " + kept + "건만 보임)";
   }
   var ce = console.error;
   console.error = function () { show([].slice.call(arguments).join(" ")); return ce.apply(console, arguments); };
