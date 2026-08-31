@@ -118,6 +118,19 @@ img { max-width: 100%; }
   .embed-note { font-size: 12px; }
 }
 
+/* ── 좁은 화면의 「한눈에」 ───────────────────────────
+   히어로 안으로 들어온 지표 띠가 375px 에서 한 줄씩 쌓여 히어로가 1268px 이 됐다
+   (첫 화면 812 을 456 넘긴다). 두 칸으로 접고 여백을 줄인다.
+   마지막 칸(보스 1체)은 혼자 남으므로 한 줄을 다 쓴다. */
+@media (max-width: 767px) {
+  #s0 [data-stack="summary"] {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+  }
+  #s0 [data-stack="summary"] > div { padding: 12px 13px !important; gap: 5px !important; }
+  #s0 [data-stack="summary"] > div:last-child { grid-column: 1 / -1; }
+}
+
 /* ── 태블릿 폭의 전투 루프 ────────────────────────────
    시안은 768px 아래에서만 카드를 세로로 쌓는다. 그 위(768~940)에서는
    카드 묶음이 990px 이라 가로로 밀린다 — 스크롤은 되지만 「전환」 화살표가
