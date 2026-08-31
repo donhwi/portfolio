@@ -56,9 +56,12 @@ aside[data-side-index] a[aria-current="true"] [data-navbar] {
 @media (prefers-reduced-motion: reduce) { #bt-viewer > div:first-child { transition: none !important; } }
 
 /* ── 기믹 카드: 노드에 올리면 그 줄만 밝아진다 ───────── */
+/* 시안이 코드 줄마다 `opacity: 1; background: transparent` 를 **인라인**으로 박아 뒀다.
+   인라인은 스타일시트를 이기므로 !important 가 없으면 이 규칙이 조용히 무시된다
+   (2026-08-31 — JS 는 멀쩡히 돌아 .is-lit 까지 붙는데 화면만 안 변했다). */
 [data-gimcard] [data-line] { transition: opacity 90ms steps(3, end), background 90ms steps(3, end); }
-[data-gimcard].is-peek [data-line] { opacity: .28; }
-[data-gimcard].is-peek [data-line].is-lit { opacity: 1; background: #10161c; }
+[data-gimcard].is-peek [data-line] { opacity: .28 !important; }
+[data-gimcard].is-peek [data-line].is-lit { opacity: 1 !important; background: #10161c !important; }
 [data-btnode] { cursor: pointer !important; }
 [data-btnode]:focus-visible { outline: 2px dashed #d4623f; outline-offset: 2px; }
 
@@ -116,6 +119,29 @@ img { max-width: 100%; }
   section p, section h2, section h3 { max-width: 100% !important; }
   [data-loop-wrap] { min-width: 0 !important; }
   .embed-note { font-size: 12px; }
+}
+
+/* ── 01-7 카드: 속줄을 카드끼리 맞춘다 ────────────────
+   바깥 높이는 격자가 맞춰 주는데 안의 「문제 / 원인 / 고친 것」 세 줄이 제각각이었다
+   (실측 1280px: [100,74,101] · [73,74,101] · [73,74,74]).
+   줄마다 px 로 최소 높이를 박으면 폭이 바뀔 때 또 어긋난다. subgrid 로 줄 자체를 공유한다.
+   카드 = 번호·제목·구분선 3줄 + 본문 3줄 = 6줄. */
+@supports (grid-template-rows: subgrid) {
+  @media (min-width: 941px) {
+    [data-log="grid"] { grid-template-rows: repeat(6, auto); align-items: stretch; }
+    [data-log="card"] {
+      grid-row: span 6;
+      display: grid !important;
+      grid-template-rows: subgrid;
+      row-gap: 18px;
+    }
+    [data-log="body"] {
+      grid-row: span 3;
+      display: grid !important;
+      grid-template-rows: subgrid;
+      row-gap: 0;
+    }
+  }
 }
 
 /* ── 좁은 화면의 「한눈에」 ───────────────────────────
