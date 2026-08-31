@@ -94,7 +94,10 @@
       var r = box.getBoundingClientRect();
       if (!w || !h || !r.width) return;
       fit = Math.min(1, (r.width - 16) / w);
-      z = fit;
+      /* 좁은 화면에서는 **폭에 맞추는 것 자체가** 그 벽이다.
+         375px 에서 칸이 331px 이라 fit 이 0.286 이 되고, 원본 14~15px 글자가 4px 이 됐다
+         (2026-08-31 실측). 읽히는 하한을 두고 나머지는 끌어서 보게 한다. */
+      z = Math.max(fit, 0.7);
       x = Math.max(0, (r.width - w * z) / 2);
       // 위쪽 46px 은 「끌어서 옮기고…」 안내 칩이 덮는 자리다. 첫 줄이 그 밑에 깔리면 안 된다
       y = h * z <= r.height ? Math.max(0, (r.height - h * z) / 2) : 46;
