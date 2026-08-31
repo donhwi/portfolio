@@ -90,6 +90,7 @@ aside[data-side-index] a[aria-current="true"] [data-navbar] {
 }
 .modal-title { color: #f4eee1; }
 .modal-note { margin-left: auto; }
+a.modal-x { text-decoration: none; }
 .modal-x {
   transition: all 90ms steps(3, end);
   padding: 7px 12px; border: 2px solid #3a3328; background: #15130f;

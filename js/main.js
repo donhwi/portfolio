@@ -224,11 +224,14 @@
             '<div class="modal-bar">' +
               '<span class="modal-title"></span>' +
               '<span class="modal-note">소리가 납니다 · 닫으면 멈춥니다</span>' +
+              // 광고 차단기가 게임 포털을 막으면 덮개가 빈 채로 남는다. 그때 나갈 길을 같이 둔다
+              '<a class="modal-x" target="_blank" rel="noopener">↗ 새 창</a>' +
               '<button class="modal-x" type="button">✕ 닫기</button>' +
             '</div>' +
             '<div class="modal-frame"></div>' +
           '</div>';
         overlay.querySelector('.modal-title').textContent = btn.dataset.embedTitle || '게임';
+        overlay.querySelector('a.modal-x').href = new URL(btn.dataset.embed, location.href).href;
 
         var frame = overlay.querySelector('.modal-frame');
         var f = document.createElement('iframe');
@@ -239,7 +242,7 @@
         frame.appendChild(f);
 
         overlay.addEventListener('click', function (e) { if (e.target === overlay) close(); });
-        overlay.querySelector('.modal-x').addEventListener('click', close);
+        overlay.querySelector('button.modal-x').addEventListener('click', close);
         document.body.appendChild(overlay);
         document.body.style.overflow = 'hidden';
 
@@ -247,7 +250,7 @@
         fit();
         addEventListener('resize', fit);
         document.addEventListener('keydown', onKey);
-        overlay.querySelector('.modal-x').focus();
+        overlay.querySelector('button.modal-x').focus();
       });
     });
   }
