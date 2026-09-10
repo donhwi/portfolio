@@ -225,3 +225,112 @@ aside[data-side-index] a[data-crosslink]:hover [data-crossarrow],
 aside[data-side-index] a[data-crosslink]:focus-visible [data-crossarrow] {
   color: #d4623f;
 }
+
+
+/* ── 좁은 폭 보정 (복원판) ─────────────────────────────
+   고정 목차(약 136px)와 본문 컬럼이 1400px 아래에서 겹쳐서,
+   폭에 따라 본문 여백을 확보하고 아주 좁으면 목차를 접는다. */
+@media (max-width: 1400px) {
+  aside[data-side-index] {
+    left: 12px !important;
+    background: rgba(14, 13, 11, .82);
+    padding: 10px 10px 10px 8px;
+  }
+  aside[data-side-index] ~ section > div,
+  aside[data-side-index] ~ section > div[style*="max-width"] {
+    padding-left: 176px !important;
+  }
+  footer > div { padding-left: 176px !important; }
+}
+@media (max-width: 860px) {
+  aside[data-side-index] { display: none !important; }
+  aside[data-side-index] ~ section > div,
+  aside[data-side-index] ~ section > div[style*="max-width"] {
+    padding-left: 24px !important;
+  }
+  footer > div { padding-left: 24px !important; }
+}
+
+
+/* ── 01-6 플레이어 기술 (추가 구간) ───────────────────── */
+@media (max-width: 1100px) {
+  [data-stack="skillgrid"], [data-stack="lanes"], [data-stack="sheets"] { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+}
+@media (max-width: 1100px) {
+  [data-stack="lore40"] { grid-template-columns: minmax(0, 1fr) !important; }
+}
+@media (max-width: 767px) {
+  [data-stack="skillgrid"], [data-stack="lanes"], [data-stack="sheets"],
+  [data-stack="intent40"], [data-stack="lore40"] { grid-template-columns: minmax(0, 1fr) !important; }
+  #s1-skills [data-breakout="1"] { margin-left: 0 !important; }
+}
+
+/* 이펙트 격자 — 칸 높이를 행 단위로 맞춘다 */
+#s1-skills [data-stack="sheets"] > [data-lift] { height: 100%; }
+#s1-skills [data-stack="sheets"] > [data-lift] > div:last-child { flex: 1 1 auto; }
+
+@media (max-width: 767px) { #s1-skills [data-breakout="1"] { margin-left: 0 !important; max-width: 100% !important; } }
+
+@media (min-width: 768px) and (max-width: 1100px) { #s1-skills [data-stack="sheets"] { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; } }
+@media (max-width: 767px) { #s1-skills [data-stack="sheets"] { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; } }
+
+/* 01-6 추가 덩어리 */
+@media (max-width: 900px) { [data-stack="prep40"] { grid-template-columns: minmax(0, 1fr) !important; } }
+@media (max-width: 900px) {
+  [data-stack="attr40"] { grid-template-columns: minmax(0, 1fr) !important; grid-template-rows: none !important; }
+  [data-stack="attr40"] > div { grid-row: auto !important; grid-template-rows: none !important; }
+}
+@media (max-width: 700px) { [data-stack="hex40"] { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; } }
+@media (max-width: 767px) {
+  [data-stack="prep40"], [data-stack="hex40"], [data-stack="attr40"] { grid-template-columns: minmax(0, 1fr) !important; }
+}
+/* 4열 한 줄에서 축 이름이 안 잘리게 */
+[data-stack="hex40"] svg text { font-size: 10px; }
+
+/* 패턴 23종 수치표 — 전체보기 (native details + :has, JS 없음) */
+#s1-bt [data-pt-box] { max-height: 340px; }
+#s1-bt div:has(> [data-pt-details][open]) [data-pt-box] { max-height: none; }
+#s1-bt div:has(> [data-pt-details][open]) [data-pt-fade] { display: none; }
+#s1-bt [data-pt-toggle]::-webkit-details-marker { display: none; }
+#s1-bt [data-pt-less] { display: none; }
+#s1-bt [data-pt-details][open] [data-pt-less] { display: inline; }
+#s1-bt [data-pt-details][open] [data-pt-more] { display: none; }
+#s1-bt [data-pt-toggle]:hover { border-color: rgb(212, 98, 63); color: rgb(244, 238, 225); }
+
+@media (max-width: 900px) {
+  [data-stack="intent2"], [data-stack="wux"], [data-stack="mult"], [data-stack="heat3"] { grid-template-columns: minmax(0, 1fr) !important; }
+  [data-stack="stars3"] { grid-template-columns: minmax(0, 1fr) !important; }
+}
+
+@media (max-width: 1100px) { [data-lore-side="1"] { margin-top: 0 !important; } }
+@media (max-width: 1100px) { [data-stack="mult"], [data-stack="wux"] { grid-template-columns: minmax(0, 1fr) !important; } }
+
+@media (max-width: 900px) {
+  [data-stack="intent2"] { grid-template-columns: minmax(0, 1fr) !important; gap: 32px !important; }
+  [data-intent-rule="1"] { display: none !important; }
+}
+
+@media (max-width: 900px) {
+  [data-stack="defgraph"], [data-stack="defeq"] { grid-template-columns: minmax(0, 1fr) !important; }
+  [data-defeq-rule="1"] { display: none !important; }
+}
+
+@media (max-width: 760px) { [data-stack="defcards"] { grid-template-columns: minmax(0, 1fr) !important; } }
+
+@media (max-width: 1100px) { [data-stack="defrow"] { grid-template-columns: minmax(0, 1fr) !important; } }
+
+@media (max-width: 900px) {
+  [data-stack="defstep"] { grid-template-columns: minmax(0, 1fr) !important; }
+  [data-stack="defeq2"] { grid-template-columns: minmax(0, 1fr) !important; }
+}
+
+[data-pt-table] th:nth-child(1), [data-pt-table] td:nth-child(1) {
+  position: sticky; left: 0; z-index: 2; background: #12110e; width: 88px; min-width: 88px;
+}
+[data-pt-table] th:nth-child(2), [data-pt-table] td:nth-child(2) {
+  position: sticky; left: 88px; z-index: 1; background: #12110e; min-width: 190px;
+}
+
+@media (max-width: 900px) { [data-stack="limit3"] { grid-template-columns: minmax(0, 1fr) !important; } }
+
+@media (max-width: 900px) { [data-stack="tree2"] { grid-template-columns: minmax(0, 1fr) !important; } }

@@ -1,12 +1,19 @@
 /* 클로드 디자인 시안이 만든 규칙. 손으로 고치지 말고 시안을 고친 뒤 다시 굽는다.
-   출처: _workspace/2026-08-28-시안10차 */
-html { scroll-behavior: smooth; background: #0a0c10; }
-  body { margin: 0; background: #0a0c10; color: #ece5d6; font-family: 'Noto Sans KR', sans-serif; font-weight: 300; -webkit-font-smoothing: antialiased; word-break: keep-all; overflow-wrap: break-word; }
+   출처: _workspace/2026-09-10-포폴시안 (+ 10차 시안 유산) */
+html { scroll-behavior: smooth; }
+  body { margin: 0; background: #0e0d0b; color: #ece5d6; font-family: 'Noto Sans KR', sans-serif; font-weight: 300; line-height: 1.9; -webkit-font-smoothing: antialiased; }
   * { box-sizing: border-box; }
   a { color: #d4623f; text-decoration: none; }
-  a:hover { color: #e88a68; }
-  ::selection { background: #c8452a; color: #f7f1e4; }
-  ::-webkit-scrollbar { width: 10px; }
+  a:hover { color: #e8825f; }
+  h1, h2, h3, h4 { font-weight: 700; letter-spacing: -0.01em; }
+  img, video { max-width: 100%; }
+  table { border-collapse: collapse; }
+  ::selection { background: rgba(212,98,63,.35); }
+  :focus-visible { outline: 2px solid #d4623f; outline-offset: 2px; }
+
+/* ── 아래는 10차 시안에서 이어받은 규칙이다.
+   새 시안이 호버·스크롤바·반응형을 안 들고 왔기 때문이다. */
+::-webkit-scrollbar { width: 10px; }
   ::-webkit-scrollbar-track { background: #0a0c10; }
   ::-webkit-scrollbar-thumb { background: #2a251c; border: 2px solid #0a0c10; }
   @keyframes dotBlink { 0%, 45% { opacity: 1 } 50%, 100% { opacity: .12 } }
