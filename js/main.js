@@ -152,10 +152,12 @@
   /* ── 4. 기믹 카드: 노드에 올리면 그 줄만 밝아진다 ────────────
      어느 노드가 어느 줄인지는 코드를 읽어야 아는 것이라 표로 박아 둔다.
      (시안의 「노드에 올리면 코드가 밝아집니다」가 이 동작이다) */
+  // 2026-09-11 — 시안의 가짜 코드(파일 셋이 저장소에 없었다)를 실제 발췌로 갈았다.
+  // 줄 번호는 tools/build_site.py 의 GIM_CODE 와 짝이다. 한쪽을 고치면 다른 쪽도.
   var LINES = [
-    [[], [3, 4], [6, 7], [9, 10], [12, 13, 14, 15]],          // ChasePressure.cs
-    [[], [3, 4], [6, 7, 8], [10, 11, 12], [14, 15]],          // SacredTreeWipe.cs
-    [[], [3, 4], [6, 7, 8], [10, 11, 12], [14, 15, 16]]       // IceMissileAction.cs
+    [[2, 3, 4], [11, 12, 13, 14], [2], [3], [4]],             // BossBtGraphBuilder.cs · BossConditions.cs
+    [[], [2, 3, 4, 5], [10, 11, 12], [13], [16, 17]],         // SacredTreeField.cs · SacredTreeRules.cs
+    [[], [2, 3, 4], [7, 8, 9, 10], [15, 16, 17], [18, 19]]    // SpecialPatterns.cs · HomingFlame.cs
   ];
   function peek() {
     [].slice.call(document.querySelectorAll('[data-gimcard]')).forEach(function (card, ci) {

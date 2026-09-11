@@ -1,5 +1,5 @@
 /* 클로드 디자인 시안이 만든 규칙. 손으로 고치지 말고 시안을 고친 뒤 다시 굽는다.
-   출처: _workspace/2026-09-10-포폴시안 (+ 10차 시안 유산) */
+   출처: _workspace/2026-09-11-포폴시안 (+ 10차 시안 유산) */
 html { scroll-behavior: smooth; }
   body { margin: 0; background: #0e0d0b; color: #ece5d6; font-family: 'Noto Sans KR', sans-serif; font-weight: 300; line-height: 1.9; -webkit-font-smoothing: antialiased; }
   * { box-sizing: border-box; }
